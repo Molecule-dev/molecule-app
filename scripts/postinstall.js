@@ -16,6 +16,7 @@ const commands = [
   // Synchronize platform(s)
 
   // Generate documentation
+  `npm run docs`,
 
   // Do whatever else
 ]
