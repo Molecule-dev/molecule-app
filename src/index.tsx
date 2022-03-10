@@ -1,17 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { App } from './App'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+export * as API from './API'
+export * as App from './App'
+export * as hooks from './hooks'
+export * as utilities from './utilities'
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+export * from './reportWebVitals'
+export * as serviceWorkerRegistration from './serviceWorkerRegistration'
+
+export * as types from './types' // @ts-only
+
+let isInitialRender = true
+
+/**
+ * Renders the React app within the `#root` element.
+ */
+export const render = (reset?: boolean): void => {
+  const rootElement = document.getElementById('root')
+
+  if (isInitialRender) {
+    isInitialRender = false
+  }
+
+  if (rootElement) {
+    if (reset) {
+      rootElement.innerHTML = ``
+      ReactDOM.render(<App />, rootElement)
+    } else if (rootElement.hasChildNodes()) {
+      ReactDOM.hydrate(<App />, rootElement)
+    } else {
+      ReactDOM.render(<App />, rootElement)
+    }
+  }
+}
+
+render()

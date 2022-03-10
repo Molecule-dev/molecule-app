@@ -1,31 +1,56 @@
 {
   "name": "molecule-app",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "displayName": "Molecule",
+  "description": "Built with Molecule.dev",
+  "author": "molecule.dev",
+  "engines": {
+    "node": ">=16 <17"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
+    "@testing-library/react-hooks": "^7.0.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.13",
+    "axios": "^0.26.1",
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.10.0",
+    "if-env": "^1.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
+    "react-snap": "^1.23.0",
+    "react-swipeable": "^6.2.0",
     "typescript": "^4.6.2",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "http-server": "^14.1.0",
+    "icon-gen": "^3.0.0",
+    "sharp": "^0.30.2"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "postversion": "node ./scripts/writeVersion.js",
+    "postinstall": "(if-env CI=true && true) || (if-env NODE_ENV=production && true) || (node ./scripts/postinstall.js)",
+    "write-dotenv-files": "node ./scripts/writeDotenvFiles.js",
+    "generate-images": "node ./scripts/generateImages.js",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint-autofix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "start": "env-cmd -e development react-scripts start",
+    "server": "npm run build && http-server ./build --port=3333 --proxy=http://localhost:4000",
+    "snapshot-html": "node ./scripts/updateContentSecurityPolicy.js",
+    "build": "env-cmd -e build --silent   react-scripts build   && node ./scripts/writeVersion.js   && npm run snapshot-html",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
