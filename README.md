@@ -16,6 +16,9 @@ This app provides core functionality necessary for most user-oriented, data-driv
 - Code linting with [ESLint](https://eslint.org/)
   - Minimal restrictions while ensuring clean code
 
+- Unit tests with [Jest](https://jestjs.io/)
+  - Tests written in TypeScript
+
 - Logging with the native `console`
 
 - Custom fonts
@@ -81,18 +84,21 @@ This app provides core functionality necessary for most user-oriented, data-driv
     - `error` - The caught error
     - `cancel` - Cancels the promise
     - `reset` - Resets the state
+  - Tests
 
 - Utilities
   - Get human readable error messages
   - Get human readable times (how long ago)
   - Convert objects to query strings
   - Open external links in system browser
+  - Tests
 
 - Core application components
   - Routes rendered using [`react-router`](https://reactrouter.com/)
   - Header
     - Logo
   - Version update indicator with update button
+  - Tests
 
 - Layout components
   - Default
@@ -277,6 +283,13 @@ For more information on customizing your ESLint configuration, visit [ESLint.org
     Automatically fixes all auto-fixable code based on our linting rules.
 
 
+- **`npm test`**
+
+    Launches the test runner in the interactive watch mode.
+
+    See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+
 - **`npm start`**
 
     Runs the app in the development mode with hot reloading enabled.
@@ -343,6 +356,8 @@ For more information on customizing your ESLint configuration, visit [ESLint.org
 - [`typescript`](https://www.npmjs.com/package/typescript) - Necessary for TypeScript support.
 
 - [`web-vitals`](https://www.npmjs.com/package/web-vitals) - Included by [`create-react-app`](https://create-react-app.dev/) for measuring performance.
+
+- [`axios-mock-adapter`](https://www.npmjs.com/package/axios-mock-adapter) - Utility for mocking `axios` requests when testing.
 
 - [`http-server`](https://www.npmjs.com/package/http-server) - Serves the production app (possibly locally), if necessary.
 

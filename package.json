@@ -31,6 +31,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.20.0",
     "http-server": "^14.1.0",
     "icon-gen": "^3.0.0",
     "sharp": "^0.30.2"
@@ -42,6 +43,7 @@
     "generate-images": "node ./scripts/generateImages.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint-autofix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "test": "env-cmd -e test react-scripts test",
     "start": "env-cmd -e development react-scripts start",
     "server": "npm run build && http-server ./build --port=3333 --proxy=http://localhost:4000",
     "snapshot-html": "node ./scripts/updateContentSecurityPolicy.js",
