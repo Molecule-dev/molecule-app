@@ -114,6 +114,7 @@ This app provides core functionality necessary for most user-oriented, data-driv
   - Tests
 
 - Themes
+  - Dark
   - Automatically selected by user's OS preference
 
 - Core application components
