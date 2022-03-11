@@ -3,6 +3,9 @@ import { render } from '@testing-library/react'
 import { Store } from '../Store'
 import * as types from '../types'
 import { version } from '../../../../package.json'
+import { themes } from '../../../themes'
+
+const defaultTheme = Object.values(themes)[0]
 
 it('renders', () => {
   const storeRef: { current: null | types.Store } = { current: null }
@@ -32,4 +35,6 @@ it('renders', () => {
   expect(store.waitingServiceWorker).toBe(null)
   expect(store.doVersionCheck).toBe(false)
   expect(store.updateServiceWorker).toBeInstanceOf(Function)
+  expect(store.theme).toBe(defaultTheme)
+  expect(store.setThemeKey).toBeInstanceOf(Function)
 })
