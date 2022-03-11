@@ -115,6 +115,7 @@ This app provides core functionality necessary for most user-oriented, data-driv
 
 - Themes
   - Dark
+  - Light
   - Automatically selected by user's OS preference
 
 - Core application components

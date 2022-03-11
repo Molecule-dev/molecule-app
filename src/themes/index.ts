@@ -7,12 +7,14 @@
 import 'styled-components'
 import { Icon } from '@primer/octicons-react'
 import { dark } from './dark'
+import { light } from './light'
 
 /**
  * Every available theme.
  */
 export const themes = {
   dark,
+  light,
 }
 
 declare module 'styled-components' {
