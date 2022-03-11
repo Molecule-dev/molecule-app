@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import { Store } from './Store/types'
 import { logger } from '../logger'
+import * as UI from '../UI'
 
 const UPDATE_TIME_LIMIT = 5000 // 5 seconds
 
@@ -13,7 +15,7 @@ export type VersionUpdateFooterProps = React.HTMLProps<HTMLDivElement> & {
  * 
  * Shown when a service worker update is ready or when the `version.json` static file has changed.
  */
-export const VersionUpdateFooter = ({ store, ...props }: VersionUpdateFooterProps) => {
+export const VersionUpdateFooter = styled(({ store, ...props }: VersionUpdateFooterProps) => {
   const [ isUpdating, setIsUpdating ] = useState(false)
 
   // If for some reason an update hangs, reload the page.
@@ -40,9 +42,10 @@ export const VersionUpdateFooter = ({ store, ...props }: VersionUpdateFooterProp
 
   if (isUpdating) {
     return (
-      <div style={{ position: `fixed`, top: 0, bottom: 0, left: 0, right: 0, width: `100%`, height: `100%`, background: `white` }}>
-        Updating...
-      </div>
+      <UI.Modal backgroundColor='transparent'>
+        <UI.ModalUnderlay title='Updating...' />
+        <UI.Spinner title='Updating...' />
+      </UI.Modal>
     )
   }
 
@@ -70,11 +73,31 @@ export const VersionUpdateFooter = ({ store, ...props }: VersionUpdateFooterProp
         New version available!
       </span>
 
-      <button onClick={update}>
+      <UI.Button backgroundColor='green' onClick={update}>
         <span>
           Update
         </span>
-      </button>
+      </UI.Button>
     </footer>
   )
-}
+})`
+  position: fixed;
+  z-index: 9999;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 55px;
+  padding: 10px;
+  text-align: center;
+  background: ${({ theme }) => theme.colors.layerBackground};
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.05);
+
+  > span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    font-size: 18px;
+    line-height: 35px;
+  }
+`

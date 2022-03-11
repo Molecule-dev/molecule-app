@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 export type PrivacyPolicyProps = React.HTMLProps<HTMLDivElement>
 
@@ -9,7 +10,7 @@ export type PrivacyPolicyProps = React.HTMLProps<HTMLDivElement>
  * 
  * You will probably need to replace this with your own.
  */
-export const PrivacyPolicy = (props: PrivacyPolicyProps) => (
+export const PrivacyPolicy = styled((props: PrivacyPolicyProps) => (
   <div { ...props }>
     <h1>Privacy Policy</h1>
 
@@ -73,4 +74,10 @@ export const PrivacyPolicy = (props: PrivacyPolicyProps) => (
 
     <p>Molecule.dev does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
   </div>
-)
+))`
+  width: 100%;
+  max-width: 600px;
+  padding: 15px;
+  margin: 0 auto;
+  color: ${({ theme }) => theme.colors.text};
+`

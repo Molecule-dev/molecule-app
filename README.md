@@ -76,6 +76,24 @@ This app provides core functionality necessary for most user-oriented, data-driv
     - Requires an additional cookie in web browsers for increased security
   - [RESTful](https://restfulapi.net/) resources
 
+- User interface (UI) components built with [`styled-components`](https://styled-components.com/)
+  - Button - A styled `button` element
+  - Center - A styled `div` using flex box CSS to center its contents both horizonally and vertically
+  - Combo - Looks like a select menu, but can type into it like it's an input
+  - Error - Accepts an `Error` instance as children, displayed only if there is an error
+  - Form - A wrapper around the native `form` element with some helpful additions
+  - Header - A styled `header` element
+  - Iframe - A styled `iframe` element which attempts to adjust its height depending on its contents
+  - Input - A styled `input` element (plus consistent cross-browser `datetime` support)
+  - Modal - A custom modal component with the option to position it either center, left, or right; includes an optional close button and/or underlay
+  - RTE - A custom rich text editor using [Quill](https://quilljs.com/), similar in function to the native `textarea` element
+  - Select - A styled `select` element, normalized to look the same for every major browser
+  - Spinner - A spinning icon to indicate loading/pending state
+  - StatusIcon - An icon to represent the state of some promise, designed to be paired with the `usePromise` hook
+  - Text - A styled `span` element to quickly color some text using the current `theme`
+  - Textarea - A styled `textarea` element
+  - Tests
+
 - Extremely useful React hooks
   - `useAsyncExtendedState` - Same as `setState` but with an additional convenient `extendState` function and the ability to accept promises
     - State can be updated asynchronously, when the promise resolves or rejects
@@ -95,10 +113,14 @@ This app provides core functionality necessary for most user-oriented, data-driv
   - Open external links in system browser
   - Tests
 
+- Themes
+  - Automatically selected by user's OS preference
+
 - Core application components
   - Routes rendered using [`react-router`](https://reactrouter.com/)
   - Header
     - Logo
+    - Theme toggler
   - Version update indicator with update button
   - Tests
 
@@ -107,6 +129,7 @@ This app provides core functionality necessary for most user-oriented, data-driv
     - Hello (World)
 
 - Store component for shared application state as a composition of React hooks
+  - `useTheme` - A hook which returns the current theme and a method to set the theme by key
   - `useVersion` - A hook which returns an object describing the current and potentially new version state and a method to update the service worker, if applicable
   - `localState` - Saves/retrieves the state of some resource to/from `localStorage`
 
@@ -336,6 +359,8 @@ For more information on customizing your ESLint configuration, visit [ESLint.org
 
 # Dependencies explained
 
+- [`@primer/octicons-react`](https://www.npmjs.com/package/@primer/octicons-react) - Open source SVG icons by GitHub.
+
 - `@testing-library/*` - Utilities for testing React components and hooks.
 
 - `@types/*` - Type definitions for popular libraries. See [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) for more information.
@@ -350,6 +375,10 @@ For more information on customizing your ESLint configuration, visit [ESLint.org
 
 - [`loglevel`](https://www.npmjs.com/package/loglevel) - Minimal logging library which helps with quickly switching between various levels of logging.
 
+- [`polished`](https://www.npmjs.com/package/polished) - Create and mix colors.
+
+- [`quill`](https://quilljs.com/) - Rich text editor.
+
 - [`react`](https://reactjs.org/) - Using [`create-react-app`](https://create-react-app.dev/)'s defaults.
 
 - [`react-dom`](https://www.npmjs.com/package/react-dom) - Renders React to the DOM.
@@ -361,6 +390,8 @@ For more information on customizing your ESLint configuration, visit [ESLint.org
 - [`react-snap`](https://www.npmjs.com/package/react-snap) - Snapshots the initially rendered HTML to give web users something to see other than a blank page before they've downloaded the application JavaScript.
 
 - [`react-swipeable`](https://www.npmjs.com/package/react-swipeable) - Used for detecting when the user overscrolls (swipes downward beyond the top of the page) so that we can possibly fetch new data.
+
+- [`styled-components`](https://www.npmjs.com/package/styled-components) - Style React components with CSS.
 
 - [`typescript`](https://www.npmjs.com/package/typescript) - Necessary for TypeScript support.
 
@@ -394,7 +425,7 @@ To create documentation like this as you build your app, include comments and ex
 
 # Building your app
 
-The app is primarily separated into `API` and `App` component directories, plus common `hooks` and `utilities` directories. Sets of type definitions usually exist as a file or directory alongside the logical grouping of modules/components.
+The app is primarily separated into `API`, `UI`, and `App` component directories, plus a `themes` directory and common `hooks` and `utilities` directories. Sets of type definitions usually exist as a file or directory alongside the logical grouping of modules/components.
 
 If you would rather use a different architecture, the existing code is designed to be adaptable. Concerns are as separated as possible while using pure, tested functions.
 

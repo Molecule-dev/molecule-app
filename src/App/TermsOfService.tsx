@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 export type TermsOfServiceProps = React.HTMLProps<HTMLDivElement>
 
@@ -9,7 +10,7 @@ export type TermsOfServiceProps = React.HTMLProps<HTMLDivElement>
  * 
  * You will probably need to replace this with your own.
  */
-export const TermsOfService = (props: TermsOfServiceProps) => (
+export const TermsOfService = styled((props: TermsOfServiceProps) => (
   <div { ...props }>
     <h1>Terms of Service</h1>
 
@@ -59,4 +60,10 @@ export const TermsOfService = (props: TermsOfServiceProps) => (
 
     <p>Any claim related to Molecule.dev's Website shall be governed by the laws of us without regards to its conflict of law provisions.</p>
   </div>
-)
+))`
+  width: 100%;
+  max-width: 600px;
+  padding: 15px;
+  margin: 0 auto;
+  color: ${({ theme }) => theme.colors.text};
+`

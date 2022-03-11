@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTheme } from './useTheme'
 import { useVersion } from './useVersion'
 import * as types from './types'
 
@@ -14,15 +15,24 @@ export type StoreProps = {
  */
 export const Store = ({ children }: StoreProps): React.ReactElement => {
   const [ status, setStatus ] = useState<types.Store['status']>(`ready`)
+  const [ theme, setThemeKey, setTheme ] = useTheme()
   const [ versionState, versionActions ] = useVersion()
 
   const store = React.useMemo<types.Store>(() => ({
     status,
 
+    theme,
+    setThemeKey,
+    setTheme,
+
     ...versionState,
     ...versionActions,
   }), [
     status,
+
+    theme,
+    setThemeKey,
+    setTheme,
 
     versionState,
     versionActions,

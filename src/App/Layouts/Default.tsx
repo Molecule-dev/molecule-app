@@ -2,6 +2,7 @@ import React from 'react'
 import { Container } from '../Container'
 import { Header } from '../Header'
 import { Store } from '../Store/types'
+import * as UI from '../../UI'
 
 const isReactSnap = navigator.userAgent === `ReactSnap`
 
@@ -21,9 +22,9 @@ export const Default = ({ store, match, children, ...props }: DefaultProps): Rea
     <Header store={store} { ...match?.params } />
 
     {(store.status === `initializing` || isReactSnap) ? (
-      <div>
-        {store.status}
-      </div>
+      <UI.Center>
+        <UI.Spinner />
+      </UI.Center>
     ) : children}
   </Container>
 )

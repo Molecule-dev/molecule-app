@@ -6,6 +6,7 @@
 
 export * from './Store'
 
+export * from './useTheme'
 export * from './useVersion'
 
 export * as localState from './localState'
