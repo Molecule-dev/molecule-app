@@ -1,5 +1,6 @@
 {
   "name": "Molecule App",
   "entryPoints": [
+    "src/index.tsx"
   ]
 }
